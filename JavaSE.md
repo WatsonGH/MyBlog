@@ -25,10 +25,10 @@
 >
 >**Class对象获得的几种方法**：
 >
-1. Class clazz = Class.forName("java.lang.Object");
-2. 2.Class clazz = Object.class;
-3. Class clazz = 实体对象.getClass();
-
+>1. Class clazz = Class.forName("java.lang.Object");
+>2. 2.Class clazz = Object.class;
+>3. Class clazz = 实体对象.getClass();
+>
 >**切记：上面三种获取方式拿到的Class对象都默认带有泛型的，即Class&lt;Object&gt;;比如Person.class拿到的其实是带有泛型的Class&lt;Person&gt;，是由JVM虚拟机来加载的并封装到Class<T>对象的。**
 >
 >得到Class对象之后再反射得到构造函数、字段、方法、注解信息
@@ -71,11 +71,10 @@
 ></pre>
 >
 >**注意**：
+>
 >**1. 如果用getDeclaredXx去获取public修饰的方法、字段、构造方法也是可行的，反过来如果用getXx去获取私有的方法、字段、构造方法将会返回NoSuchMethodException(构造和方法)、NoSuchFieldException(字段)**
 >
 >**2. 反射到的构造方法可用于创建对象、成员可以取值、方法可以调用**
-
-
 
 ## 注解 ##
 >注解(Annotation)是一种应用于类、方法、方法参数、变量、构造器及包声明中的特殊修饰符。是java 5的新特性之一。Java SE5内置了三种标准注解
@@ -84,21 +83,23 @@
 >@Deprecated: 使用了注解为它的元素编译器将发出警告，因为注解@Deprecated是不赞成使用的代码，被弃用的代码。
 >@SuppressWarnings: 关闭不当编译器警告信息。
 ></pre>
-
+>
 >**1.创建注解**
+>
 >创建注解用@interface符号，其前面也可以加上修饰符public/private等，java还提供了元注解来进行修饰自定义的注解
 >
 >![4种元注解的作用](https://i.imgur.com/SR6NXli.png)
 >
 >**2.声明注解的属性**
+>
 >注解里面只存在属性，用于记录固定的数据值
 ><pre>
 >@Target({ElementType.METHOD,ElementType.PARAMETER})
 >@Retention(RetentionPolicy.CLASS)
 >public @interface MyAnnoation {
-    int id() default 1;
-    String[] name() default {"zhangsan","lisi"};
-    RetentionPolicy enum;
+>      int id() default 1;
+>      String[] name() default {"zhangsan","lisi"};
+>      RetentionPolicy enum;
 >}
 ></pre>
 >
@@ -120,19 +121,31 @@
 ## Java数据类型（Primitive Type） ##
 
 >**Java是强类型语言，强类型语言也称为强类型定义语言。是一种总是强制类型定义的语言，要求变量的使用要严格符合定义，所有变量都必须先定义后使用。Java中的数据类型分为基本数据类型和引用数据类型。jvm会根据不同的数据类型来开辟不同的内存空间**
+>
+>
 >**八种数据类型：**
+>
+>
 >**byte**：Java中最小的数据类型，在内存中占8位(bit)，即1个字节，取值范围-128~127，默认值0
+>
 >**short**：短整型，在内存中占16位，即2个字节，取值范围-32768~32717，默认值0
 >
 >**int**：整型，用于存储整数，在内在中占32位，即4个字节，取值范围-2147483648~2147483647，默认值0
+>
 >**long**：长整型，在内存中占64位，即8个字节-2^63~2^63-1，默认值0L
+>
 >**float**：浮点型，在内存中占32位，即4个字节，用于存储带小数点的数字（与double的区别在于float类型有效小数点只有6~7位），默认值0
+>
 >**double**：双精度浮点型，用于存储带有小数点的数字，在内存中占64位，即8个字节，默认值0
+>
 >**char**：字符型，用于存储单个字符，占16位，即2个字节，取值范围0~65535，默认值为空
+>
 >**boolean**：布尔类型，占1个字节，用于判断真或假（仅有两个值，即true、false），默认值false
+>
 >
 >**引用数据类型：**
 >引用数据类型分3种：类，接口，数组
+>
 >
 >**变量：**
 >变量分为两个部分，变量类型（数据类型）和变量名，String s；String即为变量类型，s则为变量名，这样就定义好了一个名为s的变量，从变量字面意思就可以理解到他的值是不固定的，在不同的时间变量可能指向不同的值，由开发者来指定。
