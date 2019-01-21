@@ -11,3 +11,7 @@
 ### 3.开启/关闭adb ###
 开启：**adb start-server**
 关闭：**adb kill-server**
+
+### 4.查看当前用户交互的Activity ###
+方法一：**adb shell dumpsys activity | grep -i run**
+方法二：**adb shell dumpsys activity | grep "mFoc"**
